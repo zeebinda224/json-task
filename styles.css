@@ -1,0 +1,405 @@
+/* ============================================================
+   style.css — Product Catalogue Styles
+   ============================================================ */
+
+/* ---------- Google Fonts ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Jost:wght@300;400;500&display=swap');
+
+/* ---------- CSS Variables (theme tokens) ---------- */
+:root {
+  --bg:          #0f0f0f;
+  --surface:     #1a1a1a;
+  --surface-hover: #202020;
+  --border:      #2a2a2a;
+  --text:        #f0ece4;
+  --muted:       #888880;
+  --accent:      #c8a96e;
+  --in-color:    #1D9E75;
+  --out-color:   #D85A30;
+  --font-display: 'Playfair Display', serif;
+  --font-body:    'Jost', sans-serif;
+  --radius:       6px;
+}
+
+/* ---------- Reset ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------- Base ---------- */
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-weight: 400;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.site-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 2rem 2.5rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.site-title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+/* the italic golden word inside the title */
+.site-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent);
+}
+
+#product-count {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+/* ============================================================
+   FILTER / SORT BAR
+   ============================================================ */
+.toolbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 0.9rem 2.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.toolbar-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  margin-right: 0.2rem;
+}
+
+/* small vertical divider between filter and sort */
+.toolbar-sep {
+  width: 1px;
+  height: 16px;
+  background: var(--border);
+  margin: 0 0.5rem;
+}
+
+.btn {
+  padding: 0.3rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-family: var(--font-body);
+  font-weight: 400;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s, border-color 0.18s;
+  letter-spacing: 0.03em;
+}
+
+.btn:hover {
+  border-color: var(--text);
+  color: var(--text);
+}
+
+/* active state — filled pill */
+.btn.active {
+  background: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
+}
+
+/* ============================================================
+   PRODUCT GRID
+   ============================================================ */
+#catalogue {
+  display: grid;
+  /* auto-fill: as many columns as fit; min 270px each */
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 1px;                        /* thin gap = border effect */
+  background: var(--border);       /* gap color = border color */
+  border-top: 1px solid var(--border);
+}
+
+/* loading / error state — single centered message */
+#catalogue.loading,
+#catalogue.error {
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 260px;
+  font-size: 0.85rem;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+}
+
+#catalogue.error {
+  color: var(--out-color);
+}
+
+/* "no results" placeholder inside the grid */
+.no-results {
+  grid-column: 1 / -1;
+  padding: 4rem 2rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+}
+
+/* ============================================================
+   CARD
+   ============================================================ */
+.card {
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: background 0.2s;
+}
+
+.card:hover {
+  background: var(--surface-hover);
+}
+
+/* ---------- Card image area ---------- */
+.card-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;            /* perfect square */
+  overflow: hidden;
+  background: #111;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.55s ease;
+}
+
+.card:hover .card-image img {
+  transform: scale(1.06);
+}
+
+/* image switcher dots (shown when product has 2+ images) */
+.img-dots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 5px;
+}
+
+.img-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s;
+}
+
+.img-dot.active {
+  background: #fff;
+}
+
+/* ---------- Stock badge (top-left of image) ---------- */
+.stock-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.stock-badge.in-stock {
+  background: rgba(29, 158, 117, 0.15);
+  color: var(--in-color);
+  border: 1px solid rgba(29, 158, 117, 0.3);
+}
+
+.stock-badge.out-stock {
+  background: rgba(216, 90, 48, 0.15);
+  color: var(--out-color);
+  border: 1px solid rgba(216, 90, 48, 0.3);
+}
+
+/* the tiny coloured dot inside the badge */
+.badge-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
+
+.in-stock  .badge-dot { background: var(--in-color); }
+.out-stock .badge-dot { background: var(--out-color); }
+
+/* ---------- Card body ---------- */
+.card-body {
+  padding: 1rem 1.1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;                         /* push footer to bottom */
+}
+
+.card-brand {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.card-name {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+.card-desc {
+  font-size: 0.72rem;
+  color: var(--muted);
+  line-height: 1.65;
+  font-weight: 300;
+  margin-top: 2px;
+
+  /* clamp to 2 lines */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ---------- Variant chips ---------- */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.62rem;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+/* color swatch circle inside chip */
+.color-swatch {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+  flex-shrink: 0;
+}
+
+/* ---------- Card footer (price + id) ---------- */
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+
+.card-price {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+.card-price .currency {
+  font-size: 0.6rem;
+  color: var(--muted);
+  font-weight: 300;
+  margin-left: 2px;
+  vertical-align: middle;
+}
+
+.card-id {
+  font-size: 0.6rem;
+  color: var(--border);
+  letter-spacing: 0.06em;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 1.25rem 2.5rem;
+  border-top: 1px solid var(--border);
+  margin-top: 1px;
+}
+
+.site-footer span {
+  font-size: 0.65rem;
+  color: var(--muted);
+  font-weight: 300;
+  letter-spacing: 0.06em;
+}
+
+/* ============================================================
+   RESPONSIVE — narrow screens
+   ============================================================ */
+@media (max-width: 600px) {
+  .site-header,
+  .toolbar,
+  .site-footer {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .site-title {
+    font-size: 1.5rem;
+  }
+
+  #catalogue {
+    grid-template-columns: 1fr;   /* single column on mobile */
+  }
+}

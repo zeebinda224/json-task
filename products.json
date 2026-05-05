@@ -1,0 +1,81 @@
+[
+  {
+    "id": "PRD-001",
+    "name": "Urban Runner Pro",
+    "brand": "StrideSA",
+    "price": 1299.99,
+    "currency": "ZAR",
+    "in_stock": true,
+    "description": "Lightweight performance running shoe designed for urban terrain. Features responsive foam cushioning and breathable mesh upper for all-day comfort.",
+    "images": [
+      "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600",
+      "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=600"
+    ],
+    "variants": [
+      { "color": "Midnight Black", "size": "7" },
+      { "color": "Midnight Black", "size": "8" },
+      { "color": "Midnight Black", "size": "9" },
+      { "color": "Coral Red",     "size": "7" },
+      { "color": "Coral Red",     "size": "8" },
+      { "color": "Coral Red",     "size": "10" }
+    ]
+  },
+  {
+    "id": "PRD-002",
+    "name": "Heritage Leather Backpack",
+    "brand": "Cape & Co.",
+    "price": 2450.00,
+    "currency": "ZAR",
+    "in_stock": true,
+    "description": "Handcrafted full-grain leather backpack with vintage brass hardware. Fits a 15-inch laptop and features three internal compartments for organized carry.",
+    "images": [
+      "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600",
+      "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600"
+    ],
+    "variants": [
+      { "color": "Tan",        "size": "One Size" },
+      { "color": "Dark Brown", "size": "One Size" },
+      { "color": "Black",      "size": "One Size" }
+    ]
+  },
+  {
+    "id": "PRD-003",
+    "name": "Wireless Noise-Cancel Headphones",
+    "brand": "SoundWave ZA",
+    "price": 3799.00,
+    "currency": "ZAR",
+    "in_stock": false,
+    "description": "Premium over-ear headphones with 40-hour battery life, active noise cancellation, and Hi-Res audio certification. Foldable design for easy travel.",
+    "images": [
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600",
+      "https://images.unsplash.com/photo-1546435770-a3e736c9b906?w=600"
+    ],
+    "variants": [
+      { "color": "Matte Black",  "size": "One Size" },
+      { "color": "Pearl White",  "size": "One Size" },
+      { "color": "Navy Blue",    "size": "One Size" }
+    ]
+  },
+  {
+    "id": "PRD-004",
+    "name": "Merino Wool Crew Sweater",
+    "brand": "Highveld Knit",
+    "price": 899.50,
+    "currency": "ZAR",
+    "in_stock": true,
+    "description": "Ultra-soft 100% merino wool crew neck sweater. Temperature-regulating and naturally odour-resistant, perfect for South African winters.",
+    "images": [
+      "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600",
+      "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=600"
+    ],
+    "variants": [
+      { "color": "Heather Grey",  "size": "S" },
+      { "color": "Heather Grey",  "size": "M" },
+      { "color": "Heather Grey",  "size": "L" },
+      { "color": "Forest Green",  "size": "S" },
+      { "color": "Forest Green",  "size": "M" },
+      { "color": "Camel",         "size": "L" },
+      { "color": "Camel",         "size": "XL" }
+    ]
+  }
+]

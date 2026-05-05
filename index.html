@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Catalogue</title>
+
+  <!--
+    style.css se design aata hai
+    script.js se logic aata hai
+    products.json se data aata hai (JavaScript fetch karta hai)
+  -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ================================================
+       HEADER — Page ka upar wala hissa
+       ================================================ -->
+  <header class="site-header">
+    <h1 class="site-title">Product <em>Catalogue</em></h1>
+    <span id="product-count">Loading…</span>
+  </header>
+
+  <!-- ================================================
+       TOOLBAR — Filter aur Sort buttons
+       ================================================ -->
+  <div class="toolbar">
+
+    <!-- Filter buttons -->
+    <span class="toolbar-label">Filter:</span>
+    <button class="btn active" data-filter="all">All</button>
+    <button class="btn"        data-filter="in" >In Stock</button>
+    <button class="btn"        data-filter="out">Out of Stock</button>
+
+    <!-- Divider line -->
+    <div class="toolbar-sep"></div>
+
+    <!-- Sort buttons -->
+    <span class="toolbar-label">Sort:</span>
+    <button class="btn" data-sort="low" >Price ↑</button>
+    <button class="btn" data-sort="high">Price ↓</button>
+    <button class="btn" data-sort="name">A – Z</button>
+
+  </div>
+
+  <!-- ================================================
+       CATALOGUE — Products yahan display honge
+       JavaScript is div ke andar cards inject karta hai
+       ================================================ -->
+  <main id="catalogue" class="loading">
+    Loading products…
+  </main>
+
+  <!-- ================================================
+       FOOTER
+       ================================================ -->
+  <footer class="site-footer">
+    <span>Data source: products.json</span>
+    <span id="footer-time"></span>
+  </footer>
+
+  <!--
+    script.js sabse NEECHE likha hai taake
+    jab JavaScript chale tab HTML already load ho chuki ho
+  -->
+  <script src="script.js"></script>
+
+</body>
+</html>
