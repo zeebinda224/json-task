@@ -47,7 +47,8 @@
     "in_stock": false,
     "description": "Premium over-ear headphones with 40-hour battery life, active noise cancellation, and Hi-Res audio certification. Foldable design for easy travel.",
     "images": [
-      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600"
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600",
+      "https://unsplash.com/photos/black-wireless-headphones-on-white-table-lUMj2Zv5HUE"
     ],
     "variants": [
       { "color": "Matte Black",  "size": "One Size" },
